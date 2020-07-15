@@ -1,6 +1,4 @@
-# SeatReservationForBuilding
-
-Requirements:
+Requirements:\
 PHP/MySQL and LDAP\
 \
 Used for seat booking system for office buildings.\
