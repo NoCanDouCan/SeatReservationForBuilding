@@ -1,0 +1,20 @@
+CREATE DATABASE seat;
+use seat;
+CREATE TABLE user (userid int AUTO_INCREMENT PRIMARY KEY, username varchar(255),fullname varchar(255),roomid int, seatid int, isadmin int);
+CREATE TABLE room (roomid int AUTO_INCREMENT PRIMARY KEY, floorid int, roomname varchar(255), permission int);
+CREATE TABLE floor (floorid int AUTO_INCREMENT PRIMARY KEY, floorname varchar(255), department varchar(255));
+CREATE TABLE seat (seatid int AUTO_INCREMENT PRIMARY KEY, roomid int, type int, orientation int, row int, col int, description varchar(255), permission int)
+CREATE TABLE reservation (reservationid int AUTO_INCREMENT PRIMARY KEY, seatid int, reservationdate date, time int,userid int, timestamp bigint unsigned)
+CREATE TABLE blocks (blockid int AUTO_INCREMENT PRIMARY KEY, seatid int, blockedseatid int)
+CREATE TABLE usertoroom (usertoroomid int AUTO_INCREMENT PRIMARY KEY, userid int, roomid int);
+CREATE TABLE usertoseat (usertoseatid int AUTO_INCREMENT PRIMARY KEY, userid int, seatid int);
+
+CREATE TABLE groups (groupid int AUTO_INCREMENT PRIMARY KEY, info varchar(255));
+CREATE TABLE usertogroup (usertoseatid int AUTO_INCREMENT PRIMARY KEY, groupid int, userid int);
+CREATE TABLE floortogroup (floortogroupid int AUTO_INCREMENT PRIMARY KEY, groupid int, floorid int);
+CREATE TABLE roomtogroup (roomtogroupid int AUTO_INCREMENT PRIMARY KEY, groupid int, roomid int);
+
+CREATE TABLE request (requestid int AUTO_INCREMENT PRIMARY KEY, userid int, groupid int);
+
+
+CREATE TABLE floormap (floormapid int AUTO_INCREMENT PRIMARY KEY, floorid int, roomid int, seatid int, row int, col int);
